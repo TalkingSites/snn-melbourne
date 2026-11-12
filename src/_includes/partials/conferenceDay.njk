@@ -1,0 +1,145 @@
+{#- The whole day on one screen: opening, two tracks of three questions, closing.
+    Click a question for its three ribs and spine, click a session for everything about it.
+    All content comes from src/_data/day.json (SpaceDash: Settings > Programme). -#}
+{%- filter tight -%}
+{%- set ev = day.event -%}
+{%- set icon = {
+  clock: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  pin: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  cal: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+  cup: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c0 2 1.5 2 1.5 4M12 3c0 2 1.5 2 1.5 4"/></svg>',
+  out: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  people: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>'
+} -%}
+
+{%- macro faces(people, cls="") -%}
+<span class="faces {{ cls }}">{% for p in people %}<img src="{{ p.photo }}" alt="" width="80" height="80"/>{% endfor %}</span>
+{%- endmacro -%}
+{%- macro names(people) -%}{% for p in people %}{{ p.name }}{% if not loop.last %} & {% endif %}{% endfor %}{%- endmacro -%}
+{#- "Room 080.06.05" is Building 80, Level 6 -#}
+{%- macro where(room) -%}
+{%- set code = room.split(" ") | last -%}{%- set parts = code.split(".") -%}
+<span class="fact">{{ icon.pin | safe }}<span>{{ room }}{% if parts.length > 2 %}<small>Level {{ parts[1] | int }}</small>{% endif %}</span></span>
+{%- endmacro -%}
+{%- macro when(from, to) -%}<span class="fact">{{ icon.clock | safe }}<span>{{ from }}–{{ to }}</span></span>{%- endmacro -%}
+
+{#- one session, in full -#}
+{%- macro session(s, kind, from, to, q=null, others=[]) -%}
+<div class="sess">
+  <p class="sess__kind">{% if q %}<span class="code code--{{ q.key }}">{{ q.code }}</span>{% endif %}<span class="pill{% if kind == 'Spine session' %} pill--spine{% endif %}">{{ kind }}</span></p>
+  <h2 class="sess__title">{{ s.title }}</h2>
+  {% if s.lead %}<p class="sess__lead">{{ s.lead }}</p>{% endif %}
+  <div class="facts">{{ when(from, to) }}{{ where(s.room) }}</div>
+  <ul class="speakers">
+    {% for p in s.people %}<li><img src="{{ p.photo }}" alt="" width="160" height="160"/><span><strong>{{ p.name }}</strong>{% if p.role %}{{ p.role }}{% elif s.people.length == 1 %}{{ s.role }}{% endif %}</span></li>{% endfor %}
+  </ul>
+  {% if s.people.length > 1 and s.role %}<p class="speakers__role">{{ s.role }}</p>{% endif %}
+  <div class="sess__text">{% if s.text is string %}<p>{{ s.text }}</p>{% else %}{% for para in s.text %}<p>{{ para }}</p>{% endfor %}{% endif %}</div>
+  {% if s.link %}<a class="cta" href="{{ s.link }}" target="_blank" rel="noopener">View on ConfEngine {{ icon.out | safe }}</a>{% endif %}
+  {% if others.length %}
+  <div class="also">
+    <p class="also__head">{{ icon.people | safe }}{% if kind == "Spine session" %}Brings together{% else %}At the same time{% endif %}</p>
+    {% for o in others %}<button type="button" class="also__item" data-open="{{ o.id }}">{{ faces(o.people) }}<span><strong>{{ o.title }}</strong>{{ names(o.people) }}</span></button>{% endfor %}
+  </div>
+  {% endif %}
+</div>
+{%- endmacro -%}
+
+{#- a question opened: ribs branch out, run side by side, and join in the spine -#}
+{%- macro questionView(q, r, key, track) -%}
+<div class="qv qv--{{ key }}">
+  <p class="qv__track"><span class="code code--{{ key }}">{{ q.code }}</span>Track {{ track.letter }} · {{ track.name }}</p>
+  <h2 class="qv__name">{{ q.name }}</h2>
+  <p class="qv__ask">“{{ q.question }}”</p>
+  <div class="tree">
+    <p class="tree__time">{{ icon.clock | safe }}<b>{{ r.ribsTime }}–{{ r.ribsEnd }}</b> Rib sessions: three at once, in small groups</p>
+    <div class="tree__split" aria-hidden="true"></div>
+    <ul class="tree__ribs">
+      {% for rib in q.ribs %}
+      <li><button type="button" class="ribcard" data-open="{{ rib.id }}">
+        {{ faces(rib.people) }}
+        <span class="pill">{{ rib.format }}</span>
+        <span class="ribcard__title">{{ rib.title }}</span>
+        <span class="ribcard__who">{{ names(rib.people) }}</span>
+        <span class="ribcard__room">{{ icon.pin | safe }}{{ rib.room }}</span>
+      </button></li>
+      {% endfor %}
+    </ul>
+    <div class="tree__join" aria-hidden="true"></div>
+    <p class="tree__break">{{ icon.cup | safe }}{{ r.break.time }} {{ r.break.label }} · {{ r.break.place }}</p>
+    <button type="button" class="spinecard" data-open="{{ q.spine.id }}">
+      <span class="spinecard__time">{{ icon.clock | safe }}<b>{{ r.spineTime }}–{{ r.spineEnd }}</b> Spine session: everyone back together</span>
+      <span class="spinecard__who">{{ faces(q.spine.people) }}<span><strong>{{ names(q.spine.people) }}</strong>Facilitating</span><span class="ribcard__room">{{ icon.pin | safe }}{{ q.spine.room }}</span></span>
+    </button>
+  </div>
+</div>
+{%- endmacro -%}
+
+<section class="day" id="day" data-date="{{ ev.isoDate }}">
+  <div class="board">
+    <header class="top">
+      <h1>{{ ev.name }} <em>{{ ev.year }}</em></h1>
+      <p class="top__meta"><span>{{ icon.cal | safe }}{{ ev.date }}</span><span>{{ icon.pin | safe }}{{ ev.place }}</span></p>
+      <p class="top__actions"><a class="btn" href="{{ ev.register }}">Register</a><a class="btn btn--ghost" href="{{ ev.schedule }}" target="_blank" rel="noopener">Full schedule</a></p>
+    </header>
+
+    <div class="map">
+      <button type="button" class="node" data-open="{{ day.opening.id }}" data-from="{{ day.opening.time }}" data-to="{{ day.challenge.time }}">
+        <span class="node__time">{{ day.opening.time }}</span>
+        <span class="node__body"><span class="node__kind">{{ day.opening.label }}</span><span class="node__title">{{ day.opening.title }}</span></span>
+        {{ faces(day.opening.people, "faces--sm") }}
+      </button>
+
+      <p class="track track--a"><span class="code code--a">{{ day.tracks.a.letter }}</span><span><b>Track {{ day.tracks.a.letter }}</b>{{ day.tracks.a.name }} questions</span></p>
+      <span class="mid mid--empty"></span>
+      <p class="track track--b"><span class="code code--b">{{ day.tracks.b.letter }}</span><span><b>Track {{ day.tracks.b.letter }}</b>{{ day.tracks.b.name }} questions</span></p>
+
+      {% for r in day.rounds %}
+      <div class="round" data-round="{{ r.n }}" data-from="{{ r.ribsTime }}" data-to="{{ r.spineEnd }}">
+        {% for key in ["a", "b"] %}{% set q = r[key] %}
+        <button type="button" class="q q--{{ key }}" data-open="q-{{ q.code }}">
+          <span class="q__head"><span class="code code--{{ key }}">{{ q.code }}</span><span class="q__name">{{ q.name }}</span></span>
+          <span class="q__ask">“{{ q.question }}”</span>
+          <span class="q__foot"><span class="faces faces--xs">{% for rib in q.ribs %}{% for p in rib.people %}<img src="{{ p.photo }}" alt="" width="80" height="80"/>{% endfor %}{% endfor %}</span><span class="q__count">3 ribs + spine</span><span class="q__go" aria-hidden="true"></span></span>
+        </button>
+        {% if key == "a" %}
+        <div class="mid">
+          <span class="stamp"><b>{{ r.ribsTime }}</b>Ribs</span>
+          <span class="stamp stamp--break"><b>{{ icon.cup | safe }}{{ r.break.time }}</b>{{ "Lunch" if r.break.label == "Lunch" else "Break" }}</span>
+          <span class="stamp stamp--spine"><i class="wire wire--a"></i><b>{{ r.spineTime }}</b>Spines<i class="wire wire--b"></i></span>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+      <button type="button" class="node" data-open="{{ day.closing.id }}" data-from="{{ day.closing.time }}" data-to="{{ day.closing.end }}">
+        <span class="node__time">{{ day.closing.time }}</span>
+        <span class="node__body"><span class="node__kind">{{ day.closing.label }}</span><span class="node__title">{{ day.closing.title }}</span></span>
+        {{ faces(day.closing.people, "faces--sm") }}
+      </button>
+    </div>
+  </div>
+
+  <aside class="side" aria-label="Session details" hidden>
+    <div class="side__bar">
+      <button type="button" class="side__back" hidden></button>
+      <button type="button" class="side__close" aria-label="Close">×</button>
+    </div>
+    <div class="side__body" tabindex="-1"></div>
+  </aside>
+
+  <div class="store" hidden>
+    <div id="v-{{ day.opening.id }}">{{ session(day.opening, day.opening.label, day.opening.time, day.opening.end) }}</div>
+    <div id="v-{{ day.closing.id }}">{{ session(day.closing, day.closing.label, day.closing.time, day.closing.end) }}</div>
+    {% for r in day.rounds %}{% for key in ["a", "b"] %}{% set q = r[key] %}{% set qk = { code: q.code, key: key } %}
+    <div id="v-q-{{ q.code }}" data-label="{{ q.code }} {{ q.name }}">{{ questionView(q, r, key, day.tracks[key]) }}</div>
+    {% for rib in q.ribs %}
+    {% set others = [] %}{% for o in q.ribs %}{% if o.id != rib.id %}{% set others = (others.push(o), others) %}{% endif %}{% endfor %}
+    <div id="v-{{ rib.id }}" data-back="q-{{ q.code }}">{{ session(rib, rib.format, r.ribsTime, r.ribsEnd, qk, others) }}</div>
+    {% endfor %}
+    <div id="v-{{ q.spine.id }}" data-back="q-{{ q.code }}">{{ session(q.spine, "Spine session", r.spineTime, r.spineEnd, qk, q.ribs) }}</div>
+    {% endfor %}{% endfor %}
+  </div>
+</section>
+{%- endfilter -%}

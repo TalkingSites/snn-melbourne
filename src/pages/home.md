@@ -1,23 +1,8 @@
 ---
-layout: index.njk
-title: Welcome to Space Club!
-description: Check out this home page
+layout: base.njk
+title: Signal Not Noise Melbourne 2026 | How the day works
+description: Two tracks, six questions, three rounds. Rib sessions go deep in small groups, then each question comes back together in a spine session. Friday 13 November 2026, RMIT University, Melbourne.
 permalink: "/"
 ---
 
-# Hello World!
-
-Located on Dione, one of the largest moon's of Saturn, our club hosts regular get togethers.   
-Join us as we share our passion for our space home, whether gathering for meetings, contributing to the wiki and docs, reaching out to other moons, the possibilites are endless!
-
-
-{% set feedTitle = "Latest" %}
-{% set feedWhen = "all" %}
-{% include "partials/feed.njk" %}
-
-
-{% set text = "Register Now" %}
-{% set link = "https://example.com/register" %}
-{% set icon = "ticket-perforated" %}
-{% set style = "primary" %}
-{% include "partials/btn.njk" %}
+{% include "partials/conferenceDay.njk" %}

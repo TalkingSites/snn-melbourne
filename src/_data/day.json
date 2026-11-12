@@ -1,0 +1,528 @@
+{
+  "event": {
+    "name": "Signal Not Noise Melbourne",
+    "year": "2026",
+    "lead": "What will the next generation of companies look like, and what will your role be?",
+    "date": "Friday 13 November 2026",
+    "isoDate": "2026-11-13",
+    "place": "RMIT University, Building 80, Melbourne CBD",
+    "register": "https://club.signal-not-noise.com/resource_redirect/offers/jTzyfg4j",
+    "schedule": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/schedule"
+  },
+  "tracks": {
+    "a": {
+      "letter": "A",
+      "name": "Building"
+    },
+    "b": {
+      "letter": "B",
+      "name": "Navigating"
+    }
+  },
+  "opening": {
+    "id": "opening-spotlight",
+    "time": "08:30",
+    "length": "40 mins",
+    "label": "Opening spotlight",
+    "title": "Full Stack Human",
+    "lead": "The smarter machines get, the more valuable humans become.",
+    "people": [
+      {
+        "name": "Tāne Hunter",
+        "photo": "/assets/images/people/tane-hunter.jpg",
+        "role": "Founder, Future Crunch & author, Full Stack Human"
+      },
+      {
+        "name": "Daisy Wong",
+        "photo": "/assets/images/people/daisy-wong.jpg",
+        "role": "Security Culture and Awareness Lead, Disability Advocate"
+      }
+    ],
+    "text": [
+      "Opening the day, Tāne and Daisy bring Future Crunch's Full Stack Human keynote, built on research into why most enterprise AI initiatives fail to pay off, and the trainable human capabilities (catching your own cognitive bias, learning faster than the rate of change, updating your thinking as evidence shifts, and staying curious under pressure) that decide who thrives as intelligence becomes abundant. Expect them to tie those threads back to several of the day's own Building and Navigating questions, setting up what the rest of the programme digs into."
+    ],
+    "room": "Theatre 080.07.001",
+    "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50920",
+    "end": "09:10"
+  },
+  "challenge": {
+    "time": "09:15",
+    "label": "Storytelling Challenge",
+    "length": "10 mins"
+  },
+  "rounds": [
+    {
+      "n": 1,
+      "ribsTime": "09:30",
+      "ribsEnd": "10:10",
+      "spineTime": "10:45",
+      "spineEnd": "11:25",
+      "break": {
+        "time": "10:15",
+        "label": "Morning break",
+        "place": "Level 7",
+        "length": "30 mins"
+      },
+      "a": {
+        "code": "A1",
+        "name": "Engineering Trust",
+        "question": "What does good engineering look like when AI wrote half the code?",
+        "ribs": [
+          {
+            "id": "session-dalia-sinclair",
+            "format": "Talk",
+            "title": "Understanding AI Output with Engineering Fundamentals",
+            "people": [
+              {
+                "name": "Dalia Sinclair",
+                "photo": "/assets/images/people/dalia-sinclair.jpg"
+              }
+            ],
+            "role": "Full Stack Software Engineer, Dalia’s Coding Course",
+            "text": "AI output is getting faster than anyone can review. Engineering fundamentals that let you understand it and approve changes with confidence, not guesswork.",
+            "room": "Room 080.07.06",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50738"
+          },
+          {
+            "id": "session-chris-lucian",
+            "format": "Talk",
+            "title": "Kite Flying and Plate Spinning: Orchestrating Longer-Running, and More Independent Agents",
+            "people": [
+              {
+                "name": "Chris Lucian",
+                "photo": "/assets/images/people/chris-lucian.jpg"
+              }
+            ],
+            "role": "Director of Global Software Development, Hunter Industries",
+            "text": "LLMs are non-deterministic, so how do you run long-lived agent workflows without losing architectural alignment? A dual-metaphor framework for autonomy and concurrent streams.",
+            "room": "Room 080.06.05",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50601"
+          },
+          {
+            "id": "session-mark-grebler",
+            "format": "Talk",
+            "title": "How to build (hopefully) production-grade software without looking at the code. A walkthrough of a coding harness built on Speckit.",
+            "people": [
+              {
+                "name": "Mark Grebler",
+                "photo": "/assets/images/people/mark-grebler.jpg"
+              }
+            ],
+            "role": "(former) Chief Technology Officer",
+            "text": "Generating code is easy; keeping quality over time is hard. A walkthrough of harness engineering and a spec-driven coding harness, with detailed examples used in anger.",
+            "room": "Room 080.07.07",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50756"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-engineering-trust",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Pete Cohen",
+              "photo": "/assets/images/people/pete-cohen.jpg"
+            },
+            {
+              "name": "Pavi de Alwis",
+              "photo": "/assets/images/people/pavi-de-alwis.jpg"
+            }
+          ],
+          "role": "Facilitator, Revity",
+          "text": "The three rib leaders, Chris Lucian, Dalia Sinclair and Mark Grebler, take the stage as a panel. You and your group write a question for each of them, then each leader answers theirs in plenary, followed by a synthesis from Pete Cohen and Pavi de Alwis. Expect plenty of banter between panel and audience.",
+          "room": "Theatre 080.07.001"
+        }
+      },
+      "b": {
+        "code": "B1",
+        "name": "Leading Faster Teams",
+        "question": "Your team got faster. Why did you become the bottleneck?",
+        "ribs": [
+          {
+            "id": "session-nick-wadsley",
+            "format": "Workshop",
+            "title": "Why can’t you get out of the way?! How leaders can deliver value faster by giving ownership without losing oversight",
+            "people": [
+              {
+                "name": "Nick Wadsley",
+                "photo": "/assets/images/people/nick-wadsley.jpg"
+              }
+            ],
+            "role": "Engineering Manager, PaperCut Software",
+            "text": "Your team is getting faster, but work keeps waiting for you. How to offload decisions with clear principles and guardrails, without losing visibility.",
+            "room": "Room 080.08.10",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50741"
+          },
+          {
+            "id": "session-rowan-gobey",
+            "format": "Workshop",
+            "title": "Everyone’s Busy. Nothing’s Shipping. Where’s the Bottleneck?",
+            "people": [
+              {
+                "name": "Rowan Gobey",
+                "photo": "/assets/images/people/rowan-gobey.jpg"
+              }
+            ],
+            "role": "Founder, Gobey Consulting",
+            "text": "Everyone's flat out, nothing's finishing, and everyone has a different confident diagnosis. A live workshop in finding the one thing every symptom points to.",
+            "room": "Room 080.08.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50608"
+          },
+          {
+            "id": "session-milad-dakka",
+            "format": "Talk",
+            "title": "Death by a Thousand Handoffs: how aligning “Responsibility with Control” creates faster and continuous product delivery teams",
+            "people": [
+              {
+                "name": "Milad Dakka",
+                "photo": "/assets/images/people/milad-dakka.jpg"
+              }
+            ],
+            "role": "CEO, Colabyr",
+            "text": "Every developer got faster, yet the company is not shipping faster. Why the bottleneck is structural, and how aligning responsibility with control changes it, using live polls and five rules from AI-augmented teams.",
+            "room": "Room 080.07.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50606"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-leading-faster-teams",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Alex Odago",
+              "photo": "/assets/images/people/alex-odago.jpg"
+            }
+          ],
+          "role": "Facilitator, Tana Digital",
+          "text": "Alex Odago draws together the three rib sessions, led by Milad Dakka, Rowan Gobey and Nick Wadsley, and leads the room in turning what each group worked on into something useful for everyone.",
+          "room": "Theatre 080.04.011"
+        }
+      }
+    },
+    {
+      "n": 2,
+      "ribsTime": "11:30",
+      "ribsEnd": "12:10",
+      "spineTime": "13:15",
+      "spineEnd": "13:55",
+      "break": {
+        "time": "12:15",
+        "label": "Lunch",
+        "place": "Level 7",
+        "length": "60 mins"
+      },
+      "a": {
+        "code": "A2",
+        "name": "Building What Matters",
+        "question": "How do I build what matters when I’m not the one setting the strategy?",
+        "ribs": [
+          {
+            "id": "session-james-scurry",
+            "format": "Case Study",
+            "title": "I’m a CD in a streaming world. Inside a 24-Hour News Channel’s Digital Transformation",
+            "people": [
+              {
+                "name": "James Scurry",
+                "photo": "/assets/images/people/james-scurry.jpg"
+              }
+            ],
+            "role": "Senior Producer, Sky News UK",
+            "text": "The channel never switches off, but the money is moving elsewhere. Inside a 24-hour newsroom shifting its linear TV resources into digital: a case study in delivering a strategy set above you, with the room making the calls before the reveal.",
+            "room": "Room 080.07.06",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50859"
+          },
+          {
+            "id": "session-jade-bennett",
+            "format": "Workshop",
+            "title": "When Everyone Can Produce, What Makes You Trusted?",
+            "people": [
+              {
+                "name": "Jade Bennett",
+                "photo": "/assets/images/people/jade-bennett.jpg"
+              }
+            ],
+            "role": "Founder, Middleton Executive",
+            "text": "When you don't set the strategy, influence comes down to trust in your judgement. A hands-on model for making the thinking behind your decisions visible, applied to one of your own.",
+            "room": "Room 080.06.05",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50788"
+          },
+          {
+            "id": "session-saif-khan",
+            "format": "Workshop",
+            "title": "Just Keep Digging: How I Build What Matters When I Don’t Own the Strategy",
+            "people": [
+              {
+                "name": "Saif Khan",
+                "photo": "/assets/images/people/saif-khan.jpg"
+              }
+            ],
+            "role": "Senior Consultant, Fabric Group",
+            "text": "Most of us build inside someone else's strategy, and it usually arrives as one vague sentence. Saif has sat on both sides of that table, pitching and saying yes. What sits underneath a strategy and how to dig it out, through true stories and a hands-on game.",
+            "room": "Room 080.07.07",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50919"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-building-what-matters",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Gretchen Scott",
+              "photo": "/assets/images/people/gretchen-scott.jpg"
+            }
+          ],
+          "role": "Facilitator, CEO, Kaleida",
+          "text": "The three rib talks run at the same time, so most people see just one. Gretchen Scott recaps the key ideas from each, then the room splits into groups, one section of seats per rib leader. Each group reports back, and each leader shares what they learned.",
+          "room": "Theatre 080.07.001"
+        }
+      },
+      "b": {
+        "code": "B2",
+        "name": "The Board Question",
+        "question": "The board wants an AI strategy. What do you tell them? And how do you make it happen?",
+        "ribs": [
+          {
+            "id": "session-tony-ponton",
+            "format": "Talk",
+            "title": "Govern AI: Modernising Governance for the Machine Age",
+            "people": [
+              {
+                "name": "Tony Ponton",
+                "photo": "/assets/images/people/tony-ponton.jpg",
+                "role": "Executive Principal Consultant, Elabor8"
+              },
+              {
+                "name": "Phil Gadzinski",
+                "photo": "/assets/images/people/phil-gadzinski.jpg",
+                "role": "Everest Engineering"
+              }
+            ],
+            "role": "",
+            "text": "Legacy governance, built for rigid hierarchies, keeps clashing with AI-era ways of working. A modernised playbook, drawn from their upcoming book.",
+            "room": "Room 080.07.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50583"
+          },
+          {
+            "id": "session-gareth-holebrook",
+            "format": "Hands-on Session",
+            "title": "Who Governs Consequential Decisions, Like AI Strategy, After the Thud of the Rubber Stamp?",
+            "people": [
+              {
+                "name": "Gareth Holebrook",
+                "photo": "/assets/images/people/gareth-holebrook.jpg"
+              }
+            ],
+            "role": "Intent-Based Leadership Coach, Intent Based Leadership International",
+            "text": "Organisations decide with ceremony, then the rubber stamp lands and the decision stops being anyone's job. Seven properties that make a decision governable, AI strategy included. Bring one decision and put it on a Watchcard.",
+            "room": "Room 080.08.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50740"
+          },
+          {
+            "id": "session-matt-hodgson-mia-horrigan",
+            "format": "Case Study",
+            "title": "The Signal Nobody Owned: Decision Rights When You Add AI",
+            "people": [
+              {
+                "name": "Matt Hodgson",
+                "photo": "/assets/images/people/matt-hodgson.jpg"
+              },
+              {
+                "name": "Mia Horrigan",
+                "photo": "/assets/images/people/mia-horrigan.jpg"
+              }
+            ],
+            "role": "CIO. Co-Founder ZXM. AI Governance Specialist, Zen Ex Machina",
+            "text": "When agents join a decision, who decides, and who acts when signals say it's going wrong? A case study in decision rights, and the same pattern in teams adding AI.",
+            "room": "Room 080.08.10",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50909"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-the-board-question",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Craig Brown",
+              "photo": "/assets/images/people/craig-brown.jpg"
+            }
+          ],
+          "role": "Facilitator, Founder, Everest Engineering",
+          "text": "Craig Brown hosts a whole-room discussion on the question. Each rib leader brings a takeaway to explore. Phil Gadzinski and Tony Ponton: what must change in governance so teams can deliver value quickly and responsibly. Gareth Holebrook: who keeps a consequential decision under review after approval. Matt Hodgson and Mia Horrigan: why detecting a problem isn’t enough unless someone has both the authority and the duty to act.",
+          "room": "Theatre 080.04.011"
+        }
+      }
+    },
+    {
+      "n": 3,
+      "ribsTime": "14:00",
+      "ribsEnd": "14:40",
+      "spineTime": "15:15",
+      "spineEnd": "15:55",
+      "break": {
+        "time": "14:45",
+        "label": "Afternoon break",
+        "place": "Level 7",
+        "length": "30 mins"
+      },
+      "a": {
+        "code": "A3",
+        "name": "Discovery in Flux",
+        "question": "How do you design for someone whose expectations change faster than your research?",
+        "ribs": [
+          {
+            "id": "session-megan-davis",
+            "format": "Hands-on Session",
+            "title": "You Can’t Always Build What They Want: Finding Your Users Need",
+            "people": [
+              {
+                "name": "Megan Davis",
+                "photo": "/assets/images/people/megan-davis.jpg"
+              }
+            ],
+            "role": "Lead Storyteller, Spendlove and Lamb",
+            "text": "What people say they want and what they actually need are different data sets. A hands-on session in finding the real one, using the research data everyone in the room already has.",
+            "room": "Room 080.06.05",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50728"
+          },
+          {
+            "id": "session-simon-dale",
+            "format": "Case Study",
+            "title": "Duelling LLMs: what happens when the client and the analyst are both using AI to write the requirements",
+            "people": [
+              {
+                "name": "Simon Dale",
+                "photo": "/assets/images/people/simon-dale.jpg"
+              }
+            ],
+            "role": "CTO, Upscale Solutions",
+            "text": "A client's five-dot-point request became a 75-page AI-written spec, and grew sixty pages more by close of business. A case study in finding the spine that doesn't move that fast.",
+            "room": "Room 080.07.06",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50792"
+          },
+          {
+            "id": "session-rebecca-karpiuk",
+            "format": "Hands-on Session",
+            "title": "The Research Was Good. It’s Just Not True Anymore.",
+            "people": [
+              {
+                "name": "Rebecca Karpiuk",
+                "photo": "/assets/images/people/rebecca-karpiuk.jpg"
+              }
+            ],
+            "role": "Director, Straforma",
+            "text": "Eighteen months ago the research was good. Now customers are banking through wallets and alerts. What do we believe about the customer, and when did we last check it was still true?",
+            "room": "Room 080.07.07",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50854"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-discovery-in-flux",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Rose El Hage",
+              "photo": "/assets/images/people/rose-el-hage.jpg"
+            }
+          ],
+          "role": "Facilitator, Crew Lead, Everest Engineering",
+          "text": "The three rib groups come back together. Rose El Hage leads the whole room in turning what each group worked on into something useful for everyone, on the question: How do you design for someone whose expectations change faster than your research?",
+          "room": "Theatre 080.07.001"
+        }
+      },
+      "b": {
+        "code": "B3",
+        "name": "AI in Practice",
+        "question": "The pilot worked. What happens next?",
+        "ribs": [
+          {
+            "id": "session-sami-makelainen",
+            "format": "Talk",
+            "title": "Children of the Magenta: what aviation learned about skill atrophy under automation, and what it means for GenAI at work",
+            "people": [
+              {
+                "name": "Sami Mäkeläinen",
+                "photo": "/assets/images/people/sami-makelainen.jpg"
+              }
+            ],
+            "role": "Founder, Transition Level",
+            "text": "Aviation automated its core skill decades before the rest of us, and learned, expensively, what happens next. What that means as GenAI threatens knowledge work with the same fate.",
+            "room": "Room 080.07.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50770"
+          },
+          {
+            "id": "session-andrew-elms",
+            "format": "Talk",
+            "title": "AI SDLC: What Does Good Look Like?",
+            "people": [
+              {
+                "name": "Andrew Elms",
+                "photo": "/assets/images/people/andrew-elms.jpg"
+              }
+            ],
+            "role": "Engineering Manager, Xero",
+            "text": "The old ways of software development don't work in the AI age. An interactive session on what an AI SDLC looks like, drawn from what Andrew's teams at Xero are doing.",
+            "room": "Room 080.08.10",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50747"
+          },
+          {
+            "id": "session-jane-korneyko",
+            "format": "Case Study",
+            "title": "Why AI Pilots That Work Still Fail",
+            "people": [
+              {
+                "name": "Jane Korneyko",
+                "photo": "/assets/images/people/jane-korneyko.jpg"
+              }
+            ],
+            "role": "Ex-exec, now Founder, Sova",
+            "text": "Zillow's pricing AI worked and the business still wound down. Rate your own AI pilot against nine business elements and leave with a plain case for what to fix first.",
+            "room": "Room 080.08.09",
+            "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50830"
+          }
+        ],
+        "spine": {
+          "id": "session-spine-ai-in-practice",
+          "title": "Bringing the 3 Rib Sessions together",
+          "people": [
+            {
+              "name": "Ethan Wang",
+              "photo": "/assets/images/people/ethan-wang.jpg"
+            }
+          ],
+          "role": "Facilitator, Senior Data Engineer, Atlassian",
+          "text": "Ethan Wang draws together the three rib sessions, led by Jane Korneyko, Sami Mäkeläinen and Andrew Elms, pulling out the main points and where they connect.",
+          "room": "Room 080.07.09"
+        }
+      }
+    }
+  ],
+  "closing": {
+    "id": "closing-session",
+    "time": "16:00",
+    "length": "45 mins",
+    "label": "Closing",
+    "title": "The Story the Room Wrote",
+    "lead": "One shared picture of your industry, written by the room, instead of a series of disconnected sessions.",
+    "people": [
+      {
+        "name": "Megan Davis",
+        "photo": "/assets/images/people/megan-davis.jpg",
+        "role": "Lead Storyteller, Spendlove and Lamb"
+      }
+    ],
+    "text": [
+      "All day, you work on some of the six tough question areas, in small rib sessions and then in your spine groups. Along the way, everyone in the room adds their own stories and feedback through the Storytelling Challenge.",
+      "In this closing session, Megan Davis pulls those threads into one story: what the room learned, what it wants, and where it thinks this is heading. You hear what people facing different problems found, and see where the room agrees and where it does not.",
+      "You leave with a shared picture of your industry that you helped write. The session finishes with the winners of the Storytelling Challenge."
+    ],
+    "room": "Theatre 080.07.001",
+    "link": "https://confengine.com/conferences/signal-not-noise-conference-melbourne-2026/proposal/50921",
+    "end": "16:45"
+  },
+  "after": {
+    "time": "17:00",
+    "label": "Post-event",
+    "place": "The Oxford Scholar",
+    "length": "90 mins",
+    "end": "18:30"
+  }
+}

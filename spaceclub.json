@@ -1,19 +1,16 @@
 {
   "preset": "community",
   "features": {
-    "events": true,
-    "posts": true,
-    "contentTypes": true,
-    "search": true,
-    "gallery": true,
-    "forms": true,
-    "rss": true,
-    "webmcp": true
+    "events": false,
+    "posts": false,
+    "contentTypes": false,
+    "search": false,
+    "gallery": false,
+    "forms": false,
+    "rss": false,
+    "webmcp": false
   },
   "look": {
-    "modes": "light",
-    "colours": { "light": {}, "dark": {} },
-    "navbar": { "layout": "classic", "show": { "logo": true, "title": true, "search": true } },
-    "footer": { "divider": "stars", "dividerSvg": null, "colours": {} }
+    "modes": "light"
   }
 }

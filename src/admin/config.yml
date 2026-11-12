@@ -20,10 +20,10 @@ publish_mode: editorial_workflow
 
 # `npx decap-server` + the Eleventy dev server edits local files without signing in
 # (server.js leaves this out, so the built site always signs in with Authentik)
-local_backend: true
+local_backend: { url: "http://localhost:8151/api/v1" }
 
-site_url: http://localhost:8090
-display_url: http://localhost:8090
+site_url: http://localhost:8150
+display_url: http://localhost:8150
 
 media_folder: src/assets/images/uploads
 public_folder: /assets/images/uploads
@@ -83,51 +83,127 @@ collections:
               - { label: Label, name: title, widget: string }
               - { label: Link, name: href, widget: string, hint: "e.g. /about or https://..." }
               - { label: Also in footer, name: footer, widget: boolean, default: true, required: false }
-
-  - name: events
-    label: Events
-    label_singular: Event
-    folder: src/events
-    extension: md
-    format: frontmatter
-    create: true
-    slug: "{{eventDate | date('YYYY-MM-DD')}}_{{slug}}"
-    sortable_fields: [eventDate, title]
-    summary: "{{eventDate | date('YYYY-MM-DD')}}: {{title}}"
-    fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Description, name: description, widget: text, required: false }
-      - { label: Event date, name: eventDate, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
-      - { label: Start time, name: startTime, widget: string, required: false, hint: "e.g. 6:30 PM" }
-      - { label: End time, name: endTime, widget: string, required: false, hint: "e.g. 9:00 PM" }
-      - { label: Location, name: location, widget: text, required: false }
-      - { label: Map link, name: locationLink, widget: string, required: false, hint: "Paste a Google Maps (or any) link and the place becomes clickable" }
-      - { label: "Hide the date, time and place at the top", name: hideEventDetails, widget: boolean, required: false, default: false, hint: "Then add the Event details block (+) wherever you want them in the text" }
-      - { label: Image, name: image, widget: image, required: false }
-      - { label: Social preview image URL, name: preview_image, widget: string, required: false }
-      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
-      - { label: Gallery folder, name: gallery, widget: sd-folder, leading_slash: true, required: false, hint: "Its photos show at the end of the page" }
-      - { label: Recap post, name: recapPost, widget: relation, collection: posts, value_field: "{{slug}}", search_fields: [title], display_fields: [title], required: false, hint: "A post about how it went, linked at the end of the event" }
-      - { label: Body, name: body, widget: markdown, modes: [raw, rich_text] }
-
-  - name: posts
-    label: Posts
-    label_singular: Post
-    folder: src/posts
-    extension: md
-    format: frontmatter
-    create: true
-    slug: "{{postDate | date('YYYY-MM-DD')}}_{{slug}}"
-    sortable_fields: [postDate, title]
-    summary: "{{postDate | date('YYYY-MM-DD')}}: {{title}}"
-    fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Description, name: description, widget: text, required: false }
-      - { label: Post date, name: postDate, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
-      - { label: Author, name: author, widget: string, required: false }
-      - { label: Image, name: image, widget: image, required: false }
-      - { label: Social preview image URL, name: preview_image, widget: string, required: false }
-      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
-      - { label: Gallery folder, name: gallery, widget: sd-folder, leading_slash: true, required: false, hint: "Its photos show at the end of the page" }
-      - { label: Event, name: eventPage, widget: relation, collection: events, value_field: "{{slug}}", search_fields: [title], display_fields: [title], required: false, hint: "The event this post is about, linked at the end of the post" }
-      - { label: Body, name: body, widget: markdown, modes: [raw, rich_text] }
+      - label: Programme
+        name: day
+        file: src/_data/day.json
+        fields:
+          - label: Event
+            name: event
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Year, name: year, widget: string }
+              - { label: Big question, name: lead, widget: text }
+              - { label: Date, name: date, widget: string }
+              - { label: Date (for the live marker), name: isoDate, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+              - { label: Place, name: place, widget: string }
+              - { label: Register link, name: register, widget: string }
+              - { label: Full schedule link, name: schedule, widget: string }
+          - label: Tracks
+            name: tracks
+            widget: object
+            fields:
+              - { label: Track A, name: a, widget: object, fields: [{ label: Letter, name: letter, widget: string }, { label: Name, name: name, widget: string }] }
+              - { label: Track B, name: b, widget: object, fields: [{ label: Letter, name: letter, widget: string }, { label: Name, name: name, widget: string }] }
+          - &plenary
+            label: Opening
+            name: opening
+            widget: object
+            fields:
+              - { name: id, widget: hidden }
+              - { label: Time, name: time, widget: string }
+              - { label: Ends, name: end, widget: string }
+              - { label: Length, name: length, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: One line, name: lead, widget: string }
+              - label: People
+                name: people
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Photo, name: photo, widget: image }
+                  - { label: Role, name: role, widget: string }
+              - { label: Paragraphs, name: text, widget: list, field: { label: Paragraph, name: paragraph, widget: text } }
+              - { label: Room, name: room, widget: string }
+              - { label: ConfEngine link, name: link, widget: string }
+          - label: Between opening and round 1
+            name: challenge
+            widget: object
+            fields:
+              - { label: Time, name: time, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Length, name: length, widget: string }
+          - label: Rounds
+            name: rounds
+            widget: list
+            summary: "Round {{fields.n}}: {{fields.a.code}} {{fields.a.name}} + {{fields.b.code}} {{fields.b.name}}"
+            fields:
+              - { label: Round number, name: n, widget: number }
+              - { label: Rib sessions start, name: ribsTime, widget: string }
+              - { label: Rib sessions end, name: ribsEnd, widget: string }
+              - { label: Spine sessions start, name: spineTime, widget: string }
+              - { label: Spine sessions end, name: spineEnd, widget: string }
+              - label: Break before the spines
+                name: break
+                widget: object
+                fields:
+                  - { label: Time, name: time, widget: string }
+                  - { label: Label, name: label, widget: string }
+                  - { label: Place, name: place, widget: string }
+                  - { label: Length, name: length, widget: string }
+              - &question
+                label: Track A question
+                name: a
+                widget: object
+                summary: "{{fields.code}} {{fields.name}}"
+                fields:
+                  - { label: Code, name: code, widget: string, hint: "e.g. A1" }
+                  - { label: Name, name: name, widget: string }
+                  - { label: Question, name: question, widget: text }
+                  - label: Rib sessions
+                    name: ribs
+                    widget: list
+                    summary: "{{fields.format}}: {{fields.title}}"
+                    fields:
+                      - { name: id, widget: hidden }
+                      - { label: Format, name: format, widget: string }
+                      - { label: Title, name: title, widget: string }
+                      - &people
+                        label: People
+                        name: people
+                        widget: list
+                        summary: "{{fields.name}}"
+                        fields:
+                          - { label: Name, name: name, widget: string }
+                          - { label: Photo, name: photo, widget: image }
+                          - { label: "Role (when people have different ones)", name: role, widget: string, required: false }
+                      - { label: Role, name: role, widget: string, required: false }
+                      - { label: About, name: text, widget: text }
+                      - { label: Room, name: room, widget: string }
+                      - { label: ConfEngine link, name: link, widget: string }
+                  - label: Spine session
+                    name: spine
+                    widget: object
+                    fields:
+                      - { name: id, widget: hidden }
+                      - { label: Title, name: title, widget: string }
+                      - *people
+                      - { label: Role, name: role, widget: string }
+                      - { label: About, name: text, widget: text }
+                      - { label: Room, name: room, widget: string }
+              - <<: *question
+                label: Track B question
+                name: b
+          - <<: *plenary
+            label: Closing
+            name: closing
+          - label: After the closing
+            name: after
+            widget: object
+            fields:
+              - { label: Time, name: time, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Place, name: place, widget: string }
+              - { label: Length, name: length, widget: string }
